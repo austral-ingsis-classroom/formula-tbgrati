@@ -1,16 +1,21 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import edu.austral.ingsis.math.expression.*;
+import edu.austral.ingsis.math.visitor.EvaluationVisitor;
+import org.junit.jupiter.api.Test;
 
 public class ResolutionTest {
 
   /** Case 1 + 6 */
   @Test
   public void shouldResolveSimpleFunction1() {
-    final Double result = 7d;
+    Sum expression = new Sum(new Numeric(1), new Numeric(6));
+
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Double result = expression.accept(evaluationVisitor);
 
     assertThat(result, equalTo(7d));
   }
@@ -18,7 +23,9 @@ public class ResolutionTest {
   /** Case 12 / 2 */
   @Test
   public void shouldResolveSimpleFunction2() {
-    final Double result = 6d;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Division expression = new Division(new Numeric(12), new Numeric(2));
+    Double result = expression.accept(evaluationVisitor);
 
     assertThat(result, equalTo(6d));
   }
@@ -26,7 +33,10 @@ public class ResolutionTest {
   /** Case (9 / 2) * 3 */
   @Test
   public void shouldResolveSimpleFunction3() {
-    final Double result = 13.5;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Division division = new Division(new Numeric(9), new Numeric(2));
+    Multiplication expression = new Multiplication(division, new Numeric(3));
+    Double result = expression.accept(evaluationVisitor);
 
     assertThat(result, equalTo(13.5d));
   }
@@ -34,15 +44,20 @@ public class ResolutionTest {
   /** Case (27 / 6) ^ 2 */
   @Test
   public void shouldResolveSimpleFunction4() {
-    final Double result = 20.25;
-
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Division division = new Division(new Numeric(27), new Numeric(6));
+    Power power = new Power(division, new Numeric(2));
+    Double result = power.accept(evaluationVisitor);
     assertThat(result, equalTo(20.25d));
   }
 
   /** Case 36 ^ (1/2) */
   @Test
   public void shouldResolveSimpleFunction5() {
-    final Double result = 6d;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Division division = new Division(new Numeric(1), new Numeric(2));
+    Power power = new Power(new Numeric(36), division);
+    Double result = power.accept(evaluationVisitor);
 
     assertThat(result, equalTo(6d));
   }
@@ -50,7 +65,9 @@ public class ResolutionTest {
   /** Case |136| */
   @Test
   public void shouldResolveSimpleFunction6() {
-    final Double result = 136d;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Mod module = new Mod(new Numeric(136));
+    Double result = module.accept(evaluationVisitor);
 
     assertThat(result, equalTo(136d));
   }
@@ -58,7 +75,9 @@ public class ResolutionTest {
   /** Case |-136| */
   @Test
   public void shouldResolveSimpleFunction7() {
-    final Double result = 136d;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Mod module = new Mod(new Numeric(-136));
+    Double result = module.accept(evaluationVisitor);
 
     assertThat(result, equalTo(136d));
   }
@@ -66,7 +85,10 @@ public class ResolutionTest {
   /** Case (5 - 5) * 8 */
   @Test
   public void shouldResolveSimpleFunction8() {
-    final Double result = 0d;
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    Substraction subt = new Substraction(new Numeric(5), new Numeric(5));
+    Multiplication expression = new Multiplication(subt, new Numeric(8));
+    Double result = expression.accept(evaluationVisitor);
 
     assertThat(result, equalTo(0d));
   }

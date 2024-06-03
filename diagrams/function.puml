@@ -1,0 +1,68 @@
+@startuml
+
+interface Visitor{
+    +visitNumber(number: Number)
+    +visitVariable(variable: Variable)
+    +visitSum(sum: Sum)
+    +visitMultiplication(multiplication: Multiplication)
+    +visitPower(power: Power)
+    +visitSquareRoot(squareRoot: SquareRoot)
+}
+
+class EvaluationVisitor implements Visitor{
+    +visitNumber(number: Number)
+    +visitVariable(variable: Variable)
+    +visitSum(sum: Sum)
+    +visitMultiplication(multiplication: Multiplication)
+    +visitPower(power: Power)
+    +visitSquareRoot(squareRoot: SquareRoot)
+}
+
+class PrintVisitor implements Visitor{
+    +visitNumber(number: Number)
+    +visitVariable(variable: Variable)
+    +visitSum(sum: Sum)
+    +visitMultiplication(multiplication: Multiplication)
+    +visitPower(power: Power)
+    +visitSquareRoot(squareRoot: SquareRoot)
+}
+
+
+interface Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class Variable implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class Number implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class Sum implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class Multiplication implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class Power implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+class SquareRoot implements Expression{
+    +acceptVisitor(v: Visitor)
+}
+
+Visitor --> Variable
+Visitor --> Number
+Visitor --> Sum
+Visitor --> Multiplication
+Visitor --> SquareRoot
+Visitor --> Power
+Expression --> Visitor
+
+
+@enduml
