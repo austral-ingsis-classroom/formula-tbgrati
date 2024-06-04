@@ -92,4 +92,14 @@ public class ResolutionTest {
 
     assertThat(result, equalTo(0d));
   }
+
+  /** Case sqrt(64) */
+  @Test
+  public void shouldResolveSquareRoot(){
+    EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
+    SquareRoot sqrRoot = new SquareRoot(new Numeric(64));
+    Double result = sqrRoot.accept(evaluationVisitor);
+
+    assertThat(result, equalTo(8d));
+  }
 }
