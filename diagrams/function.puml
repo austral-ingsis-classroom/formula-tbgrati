@@ -27,33 +27,52 @@ class PrintVisitor implements Visitor{
     +visitSquareRoot(squareRoot: SquareRoot)
 }
 
+class ListVariablesVisitor implements Visitor{
+    +variables: List<String>
+    +visitNumber(number: Number)
+    +visitVariable(variable: Variable)
+    +visitSum(sum: Sum)
+    +visitMultiplication(multiplication: Multiplication)
+    +visitPower(power: Power)
+    +visitSquareRoot(squareRoot: SquareRoot)
+}
+
+class VariableResolutionVisitor implements Visitor{
+    +variables: Map<String, Number>
+    +visitNumber(number: Number)
+    +visitVariable(variable: Variable)
+    +visitSum(sum: Sum)
+    +visitMultiplication(multiplication: Multiplication)
+    +visitPower(power: Power)
+    +visitSquareRoot(squareRoot: SquareRoot)
+}
 
 interface Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class Variable implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class Number implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class Sum implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class Multiplication implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class Power implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 class SquareRoot implements Expression{
-    +acceptVisitor(v: Visitor)
+    +accept(v: Visitor)
 }
 
 Visitor --> Variable
