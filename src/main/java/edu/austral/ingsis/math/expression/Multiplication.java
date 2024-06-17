@@ -2,21 +2,21 @@ package edu.austral.ingsis.math.expression;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class Multiplication implements Expression {
+public class Multiplication implements Function {
 
-  private final Expression a;
-  private final Expression b;
+  private final Function a;
+  private final Function b;
 
-  public Multiplication(Expression a, Expression b) {
+  public Multiplication(Function a, Function b) {
     this.a = a;
     this.b = b;
   }
 
-  public Expression getRight() {
+  public Function getRight() {
     return b;
   }
 
-  public Expression getLeft() {
+  public Function getLeft() {
     return a;
   }
 

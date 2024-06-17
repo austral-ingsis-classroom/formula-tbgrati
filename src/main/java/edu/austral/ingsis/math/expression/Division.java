@@ -2,21 +2,21 @@ package edu.austral.ingsis.math.expression;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class Division implements Expression {
+public class Division implements Function {
 
-  private final Expression dividend;
-  private final Expression divisor;
+  private final Function dividend;
+  private final Function divisor;
 
-  public Division(Expression dividend, Expression divisor) {
+  public Division(Function dividend, Function divisor) {
     this.dividend = dividend;
     this.divisor = divisor;
   }
 
-  public Expression getDividend() {
+  public Function getDividend() {
     return dividend;
   }
 
-  public Expression getDivisor() {
+  public Function getDivisor() {
     return divisor;
   }
 

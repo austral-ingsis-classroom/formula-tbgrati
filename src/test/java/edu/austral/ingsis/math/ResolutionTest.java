@@ -95,7 +95,7 @@ public class ResolutionTest {
 
   /** Case sqrt(64) */
   @Test
-  public void shouldResolveSquareRoot(){
+  public void shouldResolveSquareRoot() {
     EvaluationVisitor evaluationVisitor = new EvaluationVisitor();
     SquareRoot sqrRoot = new SquareRoot(new Numeric(64));
     Double result = sqrRoot.accept(evaluationVisitor);

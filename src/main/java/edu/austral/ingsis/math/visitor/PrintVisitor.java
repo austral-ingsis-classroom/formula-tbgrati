@@ -4,12 +4,12 @@ import edu.austral.ingsis.math.expression.*;
 
 public class PrintVisitor implements Visitor<String> {
 
-  private String addParenthesis(String string, Expression expression) {
-    if (expression instanceof Numeric) {
+  private String addParenthesis(String string, Function function) {
+    if (function instanceof Numeric) {
       return string;
-    } else if (expression instanceof Variable) {
+    } else if (function instanceof Variable) {
       return string;
-    } else if (expression instanceof Mod) {
+    } else if (function instanceof Mod) {
       return string;
     }
     return "(" + string + ")";

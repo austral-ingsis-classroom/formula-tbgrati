@@ -2,15 +2,15 @@ package edu.austral.ingsis.math.expression;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class SquareRoot implements Expression {
+public class SquareRoot implements Function {
 
-  private Expression a;
+  private Function a;
 
-  public SquareRoot(Expression a) {
+  public SquareRoot(Function a) {
     this.a = a;
   }
 
-  public Expression getExpression() {
+  public Function getExpression() {
     return a;
   }
 

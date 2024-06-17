@@ -2,20 +2,20 @@ package edu.austral.ingsis.math.expression;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class Substraction implements Expression {
-  private final Expression a;
-  private final Expression b;
+public class Substraction implements Function {
+  private final Function a;
+  private final Function b;
 
-  public Substraction(Expression a, Expression b) {
+  public Substraction(Function a, Function b) {
     this.a = a;
     this.b = b;
   }
 
-  public Expression getLeft() {
+  public Function getLeft() {
     return a;
   }
 
-  public Expression getRight() {
+  public Function getRight() {
     return b;
   }
 

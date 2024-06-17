@@ -2,15 +2,15 @@ package edu.austral.ingsis.math.expression;
 
 import edu.austral.ingsis.math.visitor.Visitor;
 
-public class Mod implements Expression {
+public class Mod implements Function {
 
-  private Expression a;
+  private Function a;
 
-  public Mod(Expression a) {
+  public Mod(Function a) {
     this.a = a;
   }
 
-  public Expression getExpression() {
+  public Function getExpression() {
     return a;
   }
 
